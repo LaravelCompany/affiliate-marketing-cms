@@ -144,7 +144,9 @@
 
                                                     </div>
                                                     <div class="separator clear-left text-center">
-                                                        <a href="{{url('/product')}}/{{$product->id}}/{{str_replace(' ','-',strtolower($product->title))}}" class="button style-10">Lang Suph</a>
+                                                        <a href="{{url('/product')}}/{{$product->id}}/{{str_replace(' ','-',strtolower($product->title))}}" class="button style-10">
+                                                            View Product
+                                                        </a>
 
                                                     </div>
                                                     <div class="clearfix"></div>

@@ -3,41 +3,45 @@
 namespace App\Http\Controllers;
 
 use App\Subscribers;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
-use phpDocumentor\Reflection\Types\Resource;
+use Illuminate\Http\Response;
 
+/**
+ * Class SubscriberController
+ * @package App\Http\Controllers
+ */
 class SubscriberController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    public function index()
+    /**
+     * Shows a list of subscribers
+     * @method index
+     * @param Subscribers $subscribers
+     * @return Factory|\Illuminate\Foundation\Application|\Illuminate\View\View
+     */
+    public function index(Subscribers $subscribers)
     {
-        $subscribers = Subscribers::all();
+        $subscribers->all();
+
         return view('admin.subscriberslist',compact('subscribers'));
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Download a list of subscribers
+     * @method download
      */
-    public function create()
-    {
-        //
-    }
-
     public function download()
     {
-        header('Content-Type: text/csv; charset=utf-8');
-        header('Content-Disposition: attachment; filename=subscribers.csv');
 
         $output = fopen('php://output', 'w');
 
@@ -48,62 +52,13 @@ class SubscriberController extends Controller
         foreach ($result as $row){
             fputcsv($output, $row->toArray());
         }
+
         fclose($output);
+
+        header('Content-Type: text/csv; charset=utf-8');
+
+        header('Content-Disposition: attachment; filename=subscribers.csv');
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
