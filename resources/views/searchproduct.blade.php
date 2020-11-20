@@ -8,7 +8,7 @@
 
             <div style="margin: 3% 0px 3% 0px;">
                 <div class="text-center" style="color: #FFF;padding: 20px;">
-                    <h1>{{$lang->logout}} {{$search}}</h1>
+                    <h1>Search {{$search}}</h1>
                 </div>
             </div>
 
@@ -53,7 +53,9 @@
 
                                 </div>
                                 <div class="separator clear-left text-center">
-                                    <a href="{{url('/product')}}/{{$product->id}}/{{str_replace(' ','-',strtolower($product->title))}}" class="button style-10">{{$lang->sup}}</a>
+                                    <a href="{{url('/product')}}/{{$product->id}}/{{str_replace(' ','-',strtolower($product->title))}}" class="button style-10">
+                                        View
+                                    </a>
 
                                 </div>
                                 <div class="clearfix"></div>

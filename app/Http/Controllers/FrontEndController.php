@@ -287,10 +287,9 @@ class FrontEndController extends Controller
     }
 
     //Search Products
-    public function searchproduct($search)
+    public function searchproduct($search, Product $product)
     {
-       $products = Product::where('status','1')->where('title', 'like', '%' . $search . '%')
-                ->get();
+       $products = $product->where('status','1')->where('title', 'like', '%' . $search . '%')->get();
        return view('searchproduct', compact('products','search'));
     }
 
@@ -374,39 +373,6 @@ class FrontEndController extends Controller
         return redirect('/contact');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 
 
     public function click($id)
