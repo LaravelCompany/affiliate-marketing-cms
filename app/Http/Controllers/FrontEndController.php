@@ -35,6 +35,10 @@ use InvalidArgumentException;
 class FrontEndController extends Controller
 {
 
+    /**
+     * @todo Fix this by moving to an middleware
+     * FrontEndController constructor.
+     */
     public function __construct()
     {
 
@@ -379,7 +383,6 @@ class FrontEndController extends Controller
 
 
     /**
-     * @todo Fix this
      * Increments the clicks
      * @method click
      * @param $id
