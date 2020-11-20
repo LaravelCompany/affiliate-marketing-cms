@@ -312,6 +312,11 @@ class FrontEndController extends Controller
         return view('services', compact('services','pagename','categories'));
     }
 
+    /**
+     * @method subscription
+     * @param Request $request
+     * @return string
+     */
     public function subscription(Request $request)
     {
         $p1 = $request->p1;
