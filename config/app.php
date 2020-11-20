@@ -176,8 +176,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\AdminServiceProvider::class,
-        Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
+        App\Providers\AdminServiceProvider::class
     ],
 
     /*
@@ -225,8 +224,7 @@ return [
         'Storage' => Illuminate\Support\Facades\Storage::class,
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
-        'View' => Illuminate\Support\Facades\View::class,
-        'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
+        'View' => Illuminate\Support\Facades\View::class
     ],
 
 ];

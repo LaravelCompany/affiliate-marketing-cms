@@ -51,26 +51,17 @@ class CategoryController extends Controller
         ]);
 
         if ($validator->passes()) {
-        $category = new Category;
-        $category->fill($request->all());
-        $category['role'] = "main";
-        $category->save();
-        Session::flash('message', 'New Category Added Successfully.');
-        return redirect('admin/categories');
+            $category = new Category;
+            $category->fill($request->all());
+            $category['role'] = "main";
+            $category->save();
+            Session::flash('message', 'New Category Added Successfully.');
+            return redirect('admin/categories');
         }
         return redirect()->back()->with('message', 'Category Slug Must Be Unique.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -120,7 +111,7 @@ class CategoryController extends Controller
         Session::flash('message', 'Category Deleted Successfully.');
         return redirect('admin/categories');
     }
-    
+
     //Delete All Category and Its Details
     public function delete($id)
     {

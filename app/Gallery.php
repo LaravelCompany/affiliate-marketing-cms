@@ -8,7 +8,6 @@ class Gallery extends Model
 {
     protected $table = 'product_gallery';
 
-    protected $fillable = ['image', 'productid'];
+    protected $fillable = ['image', 'productid', 'type'];
 
-    public $timestamps = false;
 }
