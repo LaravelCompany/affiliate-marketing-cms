@@ -298,10 +298,16 @@ class FrontEndController extends Controller
         return view('about', compact('pagedata'));
     }
 
-    //FAQ Page Data
-    public function faq()
+    /**
+     * Display the content for the faq page
+     * @method faq
+     * @param PageSettings $pageSettings
+     * @return Factory|Application|View
+     */
+    public function faq(PageSettings $pageSettings)
     {
-        $pagedata = PageSettings::find(1);
+        $pagedata = $pageSettings->find(1);
+
         return view('faq', compact('pagedata'));
     }
 
@@ -317,6 +323,7 @@ class FrontEndController extends Controller
     }
 
     /**
+     * Subscribe an user to
      * @method subscription
      * @param Request $request
      * @return string
