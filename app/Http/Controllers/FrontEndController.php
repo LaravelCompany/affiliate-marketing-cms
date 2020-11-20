@@ -330,13 +330,21 @@ class FrontEndController extends Controller
         return "Error";
     }
 
-    //User Subscription
-    public function subscribe(Request $request)
+    /**
+     * Subscribe users to our list
+     * @method subscribe
+     * @param Request $request
+     * @param Subscribers $subscribers
+     * @return Application|RedirectResponse|Redirector
+     */
+    public function subscribe(Request $request, Subscribers $subscribers)
     {
-        $subscribe = new Subscribers;
-        $subscribe->fill($request->all());
-        $subscribe->save();
+        $subscribers->fill($request->all());
+
+        $subscribers->save();
+
         Session::flash('subscribe', 'You are subscribed Successfully.');
+
         return redirect('/');
     }
 
@@ -366,6 +374,7 @@ class FrontEndController extends Controller
 
 
     /**
+     * @todo Fix this
      * Increments the clicks
      * @method click
      * @param $id
