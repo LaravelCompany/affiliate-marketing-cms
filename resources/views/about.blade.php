@@ -8,7 +8,7 @@
 
             <div style="margin: 3% 0px 3% 0px;">
                 <div class="text-center" style="color: #FFF;padding: 20px;">
-                    <h1>{{ucwords(strtolower($lang->about))}}</h1>
+                    <h1>About us</h1>
                 </div>
             </div>
 
@@ -27,9 +27,5 @@
             </div>
         </div>
     </div>
-
-@stop
-
-@section('footer')
 
 @stop

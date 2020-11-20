@@ -9,7 +9,7 @@
             <div style="margin: 3% 0px 3% 0px;">
                 <div class="text-center" style="color: #FFF;padding: 20px;">
                     @if(is_object($category))
-                        <h1>{{$category->name}}</h1>
+                        <h1 title="{{$category->name}}">{{$category->name}}</h1>
                     @else
                         <h1>No Category Found</h1>
                     @endif
@@ -110,7 +110,7 @@
                         </article>
                     </div>
                     @empty
-                        <h3>{{$lang->lm}}</h3>
+                        <h3>Products</h3>
                     @endforelse
                     </div>
                         @if(count($products) > 0)
@@ -119,6 +119,12 @@
                                 <div class="col-md-12">
                                 <img id="load" src="{{url('/assets/images')}}/default.gif" style="display: none;width: 80px;"></div>
                                 <button type="button" id="load-more" class="button style-3">View More</button>
+                            </div>
+                        @else
+                            <div class="col-md-12">
+                                <h2>
+                                    No products found in this category.
+                                </h2>
                             </div>
                         @endif
                     </div>

@@ -100,6 +100,6 @@ Route::resource('/admin/tools', 'SeoToolsController');
 Route::get('admin/subscribers/download', 'SubscriberController@download');
 
 Route::resource('/admin/subscribers', 'SubscriberController');
-Route::post('/admin/adminpassword/change/{id}', 'AdminProfileController@changepass');
+Route::post('/admin/adminpassword/change/{id}', 'AdminProfileController@changePass');
 Route::get('/admin/adminpassword', 'AdminProfileController@password');
 Route::resource('/admin/adminprofile', 'AdminProfileController');

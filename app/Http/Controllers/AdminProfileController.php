@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -10,6 +11,7 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 
 class AdminProfileController extends Controller
 {
@@ -25,25 +27,33 @@ class AdminProfileController extends Controller
         //$this->userid = Auth::user()->id;
     }
 
+    /**
+     * @return Factory|Application|View
+     */
     public function index()
     {
         $admin = User::find(Auth::user()->id);
         return view('admin.adminprofile' , compact('admin'));
     }
 
-    public function password()
+    /**
+     * Prints the view for changing the admin password
+     * @method password
+     * @param User $user
+     * @return Factory|Application|View
+     */
+    public function password(User $user)
     {
-        $admin = User::find(Auth::user()->id);
+        $admin = $user->find(Auth::user()->id);
+
         return view('admin.adminchangepass' , compact('admin'));
     }
-
-
 
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -78,11 +88,12 @@ class AdminProfileController extends Controller
     }
 
     /**
+     * @method
      * @param Request $request
      * @param $id
      * @return Application|RedirectResponse|Redirector
      */
-    public function changepass(Request $request, $id)
+    public function changePass(Request $request, $id)
     {
         $user = User::findOrFail($id);
         $input['password'] = "";
