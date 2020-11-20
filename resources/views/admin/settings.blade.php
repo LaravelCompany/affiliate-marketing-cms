@@ -34,8 +34,7 @@
                                 </li>
                                 <li class=""><a href="#address" data-toggle="tab" aria-expanded="false">Office Address</a>
                                 </li>
-                                <li class=""><a href="#footer" data-toggle="tab" aria-expanded="false">Footer</a>
-                                </li>
+
                             </ul>
                         </div>
 
@@ -128,7 +127,7 @@
                                                 <input class="form-control col-md-7 col-xs-12" data-validate-length-range="6" name="sign" placeholder="Currency Sign" required="required" type="text" value="{{$setting[0]->sign}}">
                                             </div>
                                         </div>
-                                        
+
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-6 col-md-offset-3">
@@ -186,7 +185,7 @@
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-6 col-md-offset-3">
-                                                <!--  <button type="submit" class="btn btn-primary">Cancel</button> -->
+
                                                 <button type="submit" id="about_update" class="btn btn-success btn-block">Update Settings</button>
                                             </div>
                                         </div>
@@ -228,34 +227,13 @@
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-6 col-md-offset-3">
-                                                <!--  <button type="submit" class="btn btn-primary">Cancel</button> -->
+
                                                 <button id="office_update" type="submit" class="btn btn-success btn-block">Update Settings</button>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-                                <div class="tab-pane" id="footer">
-                                    <p class="lead">Website Footer</p>
-                                    <div class="ln_solid"></div>
-                                    <form method="POST" action="settings/footer" class="form-horizontal form-label-left" id="footer_form">
-                                        {{csrf_field()}}
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="footer"> Footer Text <span class="required">*</span>
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <textarea rows="2" cols="60" id="footerpnael" class="form-control" name="footer" required="required">{{$setting[0]->footer}}</textarea>
-                                            </div>
-                                        </div>
 
-                                        <div class="ln_solid"></div>
-                                        <div class="form-group">
-                                            <div class="col-md-6 col-md-offset-3">
-                                                <!--  <button type="submit" class="btn btn-primary">Cancel</button> -->
-                                                <button id="footer_update" type="submit" class="btn btn-success btn-block">Update Settings</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
                             </div>
                         </div>
                     </div>

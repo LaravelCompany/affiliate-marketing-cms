@@ -28,12 +28,13 @@ class SeoToolsController extends Controller
 
     /**
      * @method index
+     * @param SeoTools $seoTools
      * @return Factory|Application|View
      */
-    public function index()
+    public function index(SeoTools $seoTools)
     {
 
-        $tools = SeoTools::find(1);
+        $tools = $seoTools->firstOrFail();
 
         return view('admin.seo',compact('tools'));
     }

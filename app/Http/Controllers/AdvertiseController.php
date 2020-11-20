@@ -38,13 +38,13 @@ class AdvertiseController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     * @param Advertisement $advertisement
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Advertisement $advertisement)
     {
-        $data = new Advertisement;
-        $data->fill($request->all());
+        $advertisement->fill($request->all());
 
         if ($file = $request->file('banner')){
             $banner = time().$request->file('banner')->getClientOriginalName();
@@ -52,7 +52,7 @@ class AdvertiseController extends Controller
             $data['banner_file'] = $banner;
         }
 
-        $data->save();
+        $advertisement->save();
         Session::flash('message', 'New Advertisement Added Successfully.');
         return redirect('admin/ads');
     }
