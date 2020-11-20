@@ -17,10 +17,13 @@ use App\Subscribers;
 use App\Testimonial;
 use App\UserProfile;
 use App\Counter;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 use InvalidArgumentException;
 
 /**
@@ -155,7 +158,7 @@ class FrontEndController extends Controller
      * @method productDetails
      * @param $id
      * @param $title
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\View\View
+     * @return Factory|Application|View
      */
     public function productDetails($id,$title)
     {
@@ -257,7 +260,7 @@ class FrontEndController extends Controller
      * @method searchProduct
      * @param $search
      * @param Product $product
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\View\View
+     * @return Factory|Application|View
      */
     public function searchProduct($search, Product $product)
     {
@@ -266,14 +269,23 @@ class FrontEndController extends Controller
     }
 
 
-    //Contact Page Data
+    /**
+     * Generates the contact page
+     * @method contact
+     * @return Factory|Application|View
+     */
     public function contact()
     {
         $pagedata = PageSettings::find(1);
+
         return view('contact', compact('pagedata'));
     }
 
-    //About Page Data
+    /**
+     * Generates the about page
+     * @method about
+     * @return Factory|Application|View
+     */
     public function about()
     {
         $pagedata = PageSettings::find(1);
@@ -346,32 +358,21 @@ class FrontEndController extends Controller
     }
 
 
-
-    public function click($id)
+    /**
+     * Increments the clicks
+     * @method click
+     * @param $id
+     * @param Product $product
+     * @return Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function click($id , Product $product)
     {
-        $product =  Product::findOrFail($id);
+        $product->findOrFail($id);
         $product->click++;
         $product->update();
         return redirect($product->link);
     }
 
-    public function deleteDir($dirPath) {
-        if (! is_dir($dirPath)) {
-            throw new InvalidArgumentException("$dirPath must be a directory");
-        }
-        if (substr($dirPath, strlen($dirPath) - 1, 1) != '/') {
-            $dirPath .= '/';
-        }
-        $files = glob($dirPath . '*', GLOB_MARK);
-        foreach ($files as $file) {
-            if (is_dir($file)) {
-                self::deleteDir($file);
-            } else {
-                unlink($file);
-            }
-        }
-        rmdir($dirPath);
-    }
 
 
 }

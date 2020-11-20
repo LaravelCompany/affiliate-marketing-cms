@@ -23,7 +23,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3" style="padding: 0">
-                        <h3 class="allcats">{{$lang->cp}}</h3>
+                        <h3 class="allcats">All Categories</h3>
                         <div id="left" class="span3">
                             <ul id="menu-group-1" class="nav menu">
                                 @foreach($menus as $menu)
@@ -68,7 +68,7 @@
                         <article class="col-item">
                             <div class="photo">
 
-                                <a href="{{url('/product')}}/{{$product->id}}/{{str_replace(' ','-',strtolower($product->title))}}"> 
+                                <a href="{{url('/product')}}/{{$product->id}}/{{str_replace(' ','-',strtolower($product->title))}}">
                                     <img src="{{url('/assets/images/products')}}/{{$product->feature_image}}" class="img-responsive" alt="Product Image" />
                                 </a>
                             </div>
@@ -102,7 +102,7 @@
                                 </div>
                                 <div class="separator clear-left text-center">
 
-                                    <a href="{{url('/product')}}/{{$product->id}}/{{str_replace(' ','-',strtolower($product->title))}}" class="button style-10">{{$lang->sup}}</a>
+                                    <a href="{{url('/product')}}/{{$product->id}}/{{str_replace(' ','-',strtolower($product->title))}}" class="button style-10">View Product</a>
 
                                 </div>
                                 <div class="clearfix"></div>
@@ -118,7 +118,7 @@
                                 <input type="hidden" id="page" value="2">
                                 <div class="col-md-12">
                                 <img id="load" src="{{url('/assets/images')}}/default.gif" style="display: none;width: 80px;"></div>
-                                <button type="button" id="load-more" class="button style-3">{{$lang->np}}</button>
+                                <button type="button" id="load-more" class="button style-3">View More</button>
                             </div>
                         @endif
                     </div>

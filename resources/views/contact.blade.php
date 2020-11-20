@@ -7,7 +7,7 @@
 
             <div style="margin: 3% 0px 3% 0px;">
                 <div class="text-center" style="color: #FFF;padding: 20px;">
-                    <h1>{{ucwords(strtolower($lang->contact))}}</h1>
+                    <h1>Contact</h1>
                 </div>
             </div>
 
@@ -20,7 +20,7 @@
                 <div class="col-md-12">
                     <div class="container">
                         <!-- Form Name -->
-                        <h3>{{$lang->fpw}}</h3>
+                        <h3 class="text-center">Get in contact with us</h3>
                         <hr>
 
                         <form id="contform" method="post">
@@ -35,42 +35,41 @@
                             <!-- Text input-->
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <input name="{{$lang->con}}" placeholder="Name" class="form-control" type="text" required>
+                                    <input name="Name" placeholder="Name" class="form-control" type="text" required>
                                     <p id="nameError" class="errorMsg"></p>
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input name="{{$lang->cop}}" placeholder="Email" class="form-control"  type="email" required>
+                                    <input name="Email" placeholder="Email" class="form-control"  type="email" required>
                                     <p id="emailError" class="errorMsg"></p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <input name="{{$lang->coe}}" placeholder="Phone" pattern= "[0-9]{1.35}" class="form-control"  type="text" required>
+                                    <input name="Phone" placeholder="Phone" pattern= "[0-9]{1.35}" class="form-control"  type="text" required>
                                     <p id="phoneError" class="errorMsg"></p>
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <select name="department" class="form-control selectpicker" required>
-                                        <option value="">{{$lang->cor}}</option>
-                                        <option value="Male">{{$lang->signin}}</option>
-                                        <option value="Female">{{$lang->sie}}</option>
-                                        <option value="Others">{{$lang->spe}}</option>
+                                        <option value="">Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
                                     </select>
                                     <p id="departmentError" class="errorMsg"></p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-12">
-                                    <textarea class="form-control" placeholder="{{$lang->signup}}" name="message" rows="8" required></textarea>
+                                    <textarea class="form-control" placeholder="Message" name="message" rows="8" required></textarea>
                                     <p id="messageError" class="errorMsg"></p>
                                 </div>
                             </div>
-@php
- $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                            @php
+                             $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
- $string = substr(str_shuffle($chars), 0, 6);
-@endphp
+                             $string = substr(str_shuffle($chars), 0, 6);
+                            @endphp
                                <div class="form-group col-md-12" id="capcha">
                                 <h5 class="text-center">Fill This Field</h5>
                                 <div class="col-md-5">
@@ -81,14 +80,14 @@
                                  </div>
                                 <div class="col-md-5">
                                     <input style="text-align: center;" type="text" class="form-control" id="str2" value="">
-                                </div>                              
+                                </div>
                                </div>
                             <div id="resp"></div>
                             <!-- Button -->
                             <div class="form-group">
                                 <label class="col-md-5 control-label"></label>
                                 <div class="col-md-2">
-                                    <button type="submit" class="button style-10" >{{$lang->suf}}</button>
+                                    <button type="submit" class="button style-10" >Send</button>
                                 </div>
                             </div>
                         </form>
@@ -113,7 +112,7 @@
             return true;
         }
         else{
-             return false;       
+             return false;
         }
 return false;
     });
