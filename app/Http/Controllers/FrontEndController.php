@@ -19,8 +19,10 @@ use App\UserProfile;
 use App\Counter;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
@@ -338,8 +340,13 @@ class FrontEndController extends Controller
         return redirect('/');
     }
 
-    //Send email to Admin
-    public function contactmail(Request $request)
+    /**
+     * @todo use mail facade
+     * @method contactMail
+     * @param Request $request
+     * @return Application|RedirectResponse|Redirector
+     */
+    public function contactMail(Request $request)
     {
         $pagedata = PageSettings::findOrFail(1);
         $settings = Settings::findOrFail(1);
@@ -363,7 +370,7 @@ class FrontEndController extends Controller
      * @method click
      * @param $id
      * @param Product $product
-     * @return Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return Application|RedirectResponse|Redirector
      */
     public function click($id , Product $product)
     {

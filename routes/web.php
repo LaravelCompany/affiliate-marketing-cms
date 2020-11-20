@@ -23,7 +23,7 @@ Route::get('/services/{category}', 'FrontEndController@category');
 Route::get('/services/order/{id}', 'FrontEndController@order');
 Route::post('/subscribe', 'FrontEndController@subscribe');
 Route::post('/profile/email', 'FrontEndController@usermail');
-Route::post('/contact/email', 'FrontEndController@contactmail')->name('front.contact.submit');
+Route::post('/contact/email', 'FrontEndController@contactMail')->name('front.contact.submit');
 Route::get('/profile/{id}/{name}', 'FrontEndController@viewprofile');
 Route::get('product/{id}/{title}', 'FrontEndController@productDetails');
 Route::get('product/view/click/{id}', 'FrontEndController@click')->name('product.click');
