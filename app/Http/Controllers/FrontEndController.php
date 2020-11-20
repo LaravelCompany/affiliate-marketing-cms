@@ -22,8 +22,11 @@ use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use InvalidArgumentException;
-use Markury\MarkuryPost;
 
+/**
+ * Class FrontEndController
+ * @package App\Http\Controllers
+ */
 class FrontEndController extends Controller
 {
 
@@ -74,7 +77,6 @@ class FrontEndController extends Controller
             }
         }
     }
-
 
     function getOS() {
 
@@ -136,37 +138,7 @@ class FrontEndController extends Controller
     }
 
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
 
     //Submit Review
@@ -179,8 +151,13 @@ class FrontEndController extends Controller
         return redirect()->back()->with('message','Your Review Submitted Successfully.');
     }
 
-    //Product Data
-    public function productdetails($id,$title)
+    /**
+     * @method productDetails
+     * @param $id
+     * @param $title
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\View\View
+     */
+    public function productDetails($id,$title)
     {
         $productdata = Product::findOrFail($id);
         $data['views'] = $productdata->views + 1;
@@ -208,16 +185,6 @@ class FrontEndController extends Controller
         return view('categoryproduct', compact('products','category'));
     }
 
-    function auth_guests(){
-        return true;
-    }
-
-    function finalize(){
-        $actual_path = str_replace('project','',base_path());
-        $dir = $actual_path.'install';
-        $this->deleteDir($dir);
-        return redirect('/');
-    }
 
     //Load More Category Products
     public function loadcatproduct($slug,$page)
@@ -286,8 +253,13 @@ class FrontEndController extends Controller
         return $res;
     }
 
-    //Search Products
-    public function searchproduct($search, Product $product)
+    /**
+     * @method searchProduct
+     * @param $search
+     * @param Product $product
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\View\View
+     */
+    public function searchProduct($search, Product $product)
     {
        $products = $product->where('status','1')->where('title', 'like', '%' . $search . '%')->get();
        return view('searchproduct', compact('products','search'));

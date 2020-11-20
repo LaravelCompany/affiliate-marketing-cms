@@ -25,11 +25,11 @@ Route::post('/subscribe', 'FrontEndController@subscribe');
 Route::post('/profile/email', 'FrontEndController@usermail');
 Route::post('/contact/email', 'FrontEndController@contactmail')->name('front.contact.submit');
 Route::get('/profile/{id}/{name}', 'FrontEndController@viewprofile');
-Route::get('product/{id}/{title}', 'FrontEndController@productdetails');
+Route::get('product/{id}/{title}', 'FrontEndController@productDetails');
 Route::get('product/view/click/{id}', 'FrontEndController@click')->name('product.click');
 Route::get('category/{slug}', 'FrontEndController@catproduct');
 Route::get('loadcategory/{slug}/{page}', 'FrontEndController@loadcatproduct');
-Route::get('search/{search}', 'FrontEndController@searchproduct');
+Route::get('search/{search}', 'FrontEndController@searchProduct');
 Route::get('finalize', 'FrontEndController@finalize');
 
 Route::post('user/review', 'FrontEndController@reviewsubmit')->name('review.submit');

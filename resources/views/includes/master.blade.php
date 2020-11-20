@@ -198,7 +198,7 @@
 
             <div class="c-line"></div>
             <div class="text-center footerlink">
-                {!! $settings[0]->footer !!}
+                Copyright 2020 &hearts; <a href="https://lzomedia.com" title="web development company">@LzoMedia</a>
             </div>
         </div>
     </footer>
