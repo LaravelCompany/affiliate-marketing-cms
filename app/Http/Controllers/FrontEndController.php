@@ -311,16 +311,6 @@ class FrontEndController extends Controller
         return view('faq', compact('pagedata'));
     }
 
-    //Show Category Users
-    public function category($category)
-    {
-        $categories = Category::where('slug', $category)->first();
-        $services = Service::where('status', 1)
-            ->where('category', $categories->id)
-            ->get();
-        $pagename = "All Sevices in: ".ucwords($categories->name);
-        return view('services', compact('services','pagename','categories'));
-    }
 
     /**
      * Subscribe an user to
