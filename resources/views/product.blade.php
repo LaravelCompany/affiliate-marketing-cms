@@ -2,14 +2,12 @@
 
 @section('content')
 
-    <section class="container" style="margin-top: 20px;">
+    <section class="container m-2">
         <div class="content-push">
-
+            <!-- todo move this to a shared view functionality !-->
             <div class="breadcrumb-box">
                 <a href="{{url('/')}}">Home</a>
                 <a href="{{url('/category')}}/{{\App\Category::where('id',$productdata->category[0])->first()->slug}}">{{\App\Category::where('id',$productdata->category[0])->first()->name}}</a>
-                <a href="{{url('/category')}}/{{\App\Category::where('id',$productdata->category[1])->first()->slug}}">{{\App\Category::where('id',$productdata->category[1])->first()->name}}</a>
-                <a href="{{url('/category')}}/{{\App\Category::where('id',$productdata->category[2])->first()->slug}}">{{\App\Category::where('id',$productdata->category[2])->first()->name}}</a>
                 <a href="{{url('/product')}}/{{$productdata->id}}/{{str_replace(' ','-',strtolower($productdata->title))}}">{{$productdata->title}}</a>
             </div>
 
@@ -58,8 +56,6 @@
                                             </div>
                                         @empty
                                         @endforelse
-
-
                                     </div>
                                     <div class="pagination"></div>
                                 </div>

@@ -4,13 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Gallery;
+use App\Http\Traits\Seo;
 use App\Product;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 
+/**
+ * Class ProductController
+ * @package App\Http\Controllers
+ */
 class ProductController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -19,12 +30,14 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return Factory|Application|Response|View
      */
     public function index()
     {
+
+
         $products = Product::orderBy('id','desc')->get();
-        return view('admin.productlist',compact('products'));
+        return view('admin.product-list',compact('products'));
     }
 
 
@@ -45,9 +58,8 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Product $data)
     {
-        $data = new Product();
         $data->fill($request->all());
         $data->category = $request->mainid.",".$request->subid.",".$request->childid;
 
@@ -80,12 +92,13 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     * @param Product $product
      * @return Response
      */
-    public function edit($id)
+    public function edit($id, Product  $product)
     {
-        $product = Product::findOrFail($id);
+        $product -> findOrFail($id);
         $child = Category::where('role','child')->where('subid',$product->category[1])->get();
         $subs = Category::where('role','sub')->where('mainid',$product->category[0])->get();
         $categories = Category::where('role','main')->get();
@@ -95,13 +108,14 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     * @param Product $product
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, Product $product)
     {
-        $product = Product::findOrFail($id);
+        $product->findOrFail($id);
         $input = $request->all();
         $input['category'] = $request->mainid.",".$request->subid.",".$request->childid;
         if ($file = $request->file('photo')){
@@ -139,11 +153,16 @@ class ProductController extends Controller
         return redirect('admin/products');
     }
 
-    public function status($id , $status)
+    /**
+     * @param $id
+     * @param $status
+     * @param Product $product
+     * @return Application|RedirectResponse|Redirector
+     */
+    public function status($id , $status, Product $product)
     {
-        $product = Product::findOrFail($id);
-        $input['status'] = $status;
-        $product->update($input);
+        $product->findOrFail($id);
+        $product->update(['status' => $status]);
         Session::flash('message', 'Product Status Updated Successfully.');
         return redirect('admin/products');
     }
@@ -155,9 +174,9 @@ class ProductController extends Controller
      * @return Response
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy($id, Product $product)
     {
-        $product = Product::findOrFail($id);
+        $product->findOrFail($id);
         unlink('assets/images/products/'.$product->feature_image);
         $product->delete();
         return redirect('admin/products')->with('message','Product Delete Successfully.');

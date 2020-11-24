@@ -17,10 +17,9 @@ Route::get('/', 'FrontEndController@index');
 Route::get('/about', 'FrontEndController@about');
 Route::get('/faq', 'FrontEndController@faq');
 Route::get('/contact', 'FrontEndController@contact');
-Route::get('/listall', 'FrontEndController@all');
-Route::get('/listfeatured', 'FrontEndController@featured');
-Route::get('/services/{category}', 'FrontEndController@category');
-Route::get('/services/order/{id}', 'FrontEndController@order');
+
+
+
 Route::post('/subscribe', 'FrontEndController@subscribe');
 Route::post('/profile/email', 'FrontEndController@usermail');
 Route::post('/contact/email', 'FrontEndController@contactMail')->name('front.contact.submit');
@@ -30,7 +29,7 @@ Route::get('product/view/click/{id}', 'FrontEndController@click')->name('product
 Route::get('category/{slug}', 'FrontEndController@catproduct');
 Route::get('loadcategory/{slug}/{page}', 'FrontEndController@loadcatproduct');
 Route::get('search/{search}', 'FrontEndController@searchProduct');
-Route::get('finalize', 'FrontEndController@finalize');
+
 
 Route::post('user/review', 'FrontEndController@reviewsubmit')->name('review.submit');
 

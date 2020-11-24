@@ -2,31 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Cart;
+
 use App\Category;
 use App\Gallery;
-use App\Order;
+use App\Http\Traits\Seo;
 use App\PageSettings;
 use App\Product;
 use App\Review;
 use App\SectionTitles;
-use App\Service;
-use App\ServiceSection;
 use App\Settings;
 use App\Subscribers;
 use App\Testimonial;
-use App\UserProfile;
 use App\Counter;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use GuzzleHttp\Client;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use InvalidArgumentException;
+
 
 /**
  * Class FrontEndController
@@ -34,6 +29,8 @@ use InvalidArgumentException;
  */
 class FrontEndController extends Controller
 {
+
+    use Seo;
 
     /**
      * @todo Fix this by moving to an middleware
@@ -168,13 +165,16 @@ class FrontEndController extends Controller
      */
     public function productDetails($id,$title)
     {
+
         $productdata = Product::findOrFail($id);
+
+        $this->setProductSeo($productdata);
+
         $data['views'] = $productdata->views + 1;
         $productdata->update($data);
-        $relateds = Product::where('status','1')->whereRaw('FIND_IN_SET(?,category)', [$productdata->category[0]])
-            ->take(8)->get();
-        $gallery = Gallery::where('productid',$id)->get();
 
+        $relateds = Product::where('status','1')->whereRaw('FIND_IN_SET(?,category)', [$productdata->category[0]])->take(8)->get();
+        $gallery = Gallery::where('productid',$id)->get();
         $reviews = Review::where('productid',$id)->get();
         return view('product', compact('productdata','gallery','reviews','relateds'));
     }
@@ -311,16 +311,6 @@ class FrontEndController extends Controller
         return view('faq', compact('pagedata'));
     }
 
-    //Show Category Users
-    public function category($category)
-    {
-        $categories = Category::where('slug', $category)->first();
-        $services = Service::where('status', 1)
-            ->where('category', $categories->id)
-            ->get();
-        $pagename = "All Sevices in: ".ucwords($categories->name);
-        return view('services', compact('services','pagename','categories'));
-    }
 
     /**
      * Subscribe an user to

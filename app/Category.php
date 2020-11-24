@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+
+    private $name;
+
     protected $table = 'categories';
 
     protected $fillable = ['mainid', 'subid', 'role','name', 'slug'];
 
-    public $timestamps = false;
 
     public static $withoutAppends = false;
 
@@ -29,6 +31,11 @@ class Category extends Model
 
         return Category::where('id',$subid)->first();
 
+    }
+
+
+    public function getName(){
+        return $this->name;
     }
 
 }
