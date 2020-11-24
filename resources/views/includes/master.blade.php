@@ -9,9 +9,9 @@
     <link rel="icon" type="image/png" href="{{url('/')}}/assets/images/{{$settings[0]->favicon}}"/>
 
     <!-- OR -->
-    {!! SEO::generate() !!}
+{!! SEO::generate() !!}
 
-    <!-- Bootstrap Core CSS -->
+<!-- Bootstrap Core CSS -->
     <link href="{{ URL::asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{ URL::asset('assets/css/owl.carousel.min.css')}}" rel="stylesheet">
@@ -119,10 +119,6 @@
                                         <li class="simple-list"><a href="{{url('/contact')}}" class="">Contact</a></li>
                                     @endif
 
-                                    <li class="fixed-header-visible">
-                                        {{--<a class="fixed-header-square-button open-cart-popup"><i class="fa fa-shopping-cart"></i></a>--}}
-                                        {{--<a class="fixed-header-square-button open-search-popup"><i class="fa fa-search"></i></a>--}}
-                                    </li>
                                 </ul>
 
                                 <div class="clear"></div>
@@ -154,34 +150,18 @@
             </div>
 
             <div class="row">
-                <div class="col-md-3 about">
-                    <h4>{{ucwords(strtolower("About"))}}</h4>
+                <div class="col-md-4 about">
+                    <h4>{{ ucwords(strtolower("About")) }}</h4>
                     <p>{{$settings[0]->about}}</p>
                 </div>
-                <div class="col-md-3 address">
-                    <h4>Contact</h4>
+                <div class="col-md-4 address">
+                    <h4> Contact</h4>
                     <p>Address {{$settings[0]->address}}</p>
                     <p>Phone {{$settings[0]->phone}}</p>
                     <p>Fax {{$settings[0]->fax}}</p>
                     <p>Email {{$settings[0]->email}}</p>
                 </div>
-                <div class="col-md-3">
-                    <div class="socicon text-center">
-                        @if($sociallinks[0]->f_status == "enable")
-                            <a href="{{$sociallinks[0]->facebook}}" class="facebook"><i class="fa fa-facebook"></i></a>
-                        @endif
-                        @if($sociallinks[0]->t_status == "enable")
-                            <a href="{{$sociallinks[0]->twiter}}" class="twitter"><i class="fa fa-twitter"></i></a>
-                        @endif
-                        @if($sociallinks[0]->g_status == "enable")
-                            <a href="{{$sociallinks[0]->g_plus}}" class="google"><i class="fa fa-google"></i></a>
-                        @endif
-                        @if($sociallinks[0]->link_status == "enable")
-                            <a href="{{$sociallinks[0]->linkedin}}" class="linkedin"><i class="fa fa-linkedin"></i></a>
-                        @endif
-                    </div>
-                </div>
-                <div class="col-md-3 text-center">
+                <div class="col-md-4 text-center">
                     <form action="{{action('FrontEndController@subscribe')}}" method="post">
                         {{csrf_field()}}
                         <h4>Contact</h4>
@@ -209,15 +189,13 @@
         <form id="searchform">
             <button type="button" id="searchbtn" class="search-button">
                 <i class="fa fa-search"></i>
-
             </button>
-
             <div class="search-field">
+                <label for="searchdata"></label>
                 <input type="text" id="searchdata" value="" placeholder="Search"/>
             </div>
         </form>
     </div>
-
 </div>
 <script>
     var mainurl = '{{url('/')}}';

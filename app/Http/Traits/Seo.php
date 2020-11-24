@@ -34,7 +34,7 @@ trait Seo
      * @param Category $category
      */
     function setCategorySeo(Category $category){
-
+        SEOMeta::setTitle($category->name);
     }
 
 }
