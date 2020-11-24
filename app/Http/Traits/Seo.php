@@ -9,6 +9,7 @@ namespace App\Http\Traits;
 
 use App\Category;
 use App\Product;
+use Artesaos\SEOTools\Facades\SEOMeta;
 
 /**
  * Trait Seo
@@ -23,7 +24,7 @@ trait Seo
      * @param Product $product
      */
     function setProductSeo(Product $product){
-
+        SEOMeta::setTitle($product->title);
     }
 
 

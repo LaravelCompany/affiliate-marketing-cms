@@ -5,10 +5,12 @@
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
-    <meta name="keywords" content="{{$code[0]->meta_keys}}">
-    <meta name="author" content="GeniusOcean">
+    <meta name="author" content="LzoMedia">
     <link rel="icon" type="image/png" href="{{url('/')}}/assets/images/{{$settings[0]->favicon}}"/>
-    <title>{{$settings[0]->title}}</title>
+
+    <!-- OR -->
+    {!! SEO::generate() !!}
+
     <!-- Bootstrap Core CSS -->
     <link href="{{ URL::asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">

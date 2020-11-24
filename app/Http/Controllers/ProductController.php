@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Gallery;
+use App\Http\Traits\Seo;
 use App\Product;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
@@ -20,6 +21,7 @@ use Illuminate\View\View;
  */
 class ProductController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -32,6 +34,8 @@ class ProductController extends Controller
      */
     public function index()
     {
+
+
         $products = Product::orderBy('id','desc')->get();
         return view('admin.product-list',compact('products'));
     }
