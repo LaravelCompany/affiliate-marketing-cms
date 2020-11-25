@@ -8,6 +8,6 @@ class Gallery extends Model
 {
     protected $table = 'product_gallery';
 
-    protected $fillable = ['image', 'productid', 'type'];
+    protected $fillable = ['image', 'product_id', 'type'];
 
 }
