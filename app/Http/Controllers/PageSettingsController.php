@@ -25,21 +25,6 @@ class PageSettingsController extends Controller
     }
 
 
-
-
-    //Upadte About Page Section Settings
-    public function about(Request $request)
-    {
-        $page = PageSettings::findOrFail(1);
-        $input = $request->all();
-        if ($request->a_status == ""){
-            $input['a_status'] = 0;
-        }
-        $page->update($input);
-        Session::flash('message', 'About Us Page Content Updated Successfully.');
-        return redirect('admin/pagesettings');
-    }
-
     //Upadte FAQ Page Section Settings
     public function faq(Request $request)
     {

@@ -40,9 +40,7 @@
 <body>
 <div id="cover"></div>
 <div class="theme2">
-
     <div id="content-block">
-
         <div class="content-center fixed-header-margin">
             <!-- HEADER -->
             <div class="header-wrapper style-10">
@@ -81,53 +79,18 @@
                             <nav>
                                 <ul>
                                     <li class="simple-list"><a href="{{url('/')}}" class="">Home</a></li>
-
                                     @foreach($menus as $menu)
                                         <li class="full-width-columns">
-                                            <a href="{{url('/category')}}/{{$menu->slug}}">{{$menu->name}}</a><i
-                                                    class="fa fa-chevron-down"></i>
-                                            <div class="submenu">
-                                                @foreach(\App\Category::where('mainid',$menu->id)->where('role','sub')->get() as $submenu)
-                                                    <div class="product-column-entry">
-                                                        <div class="submenu-list-title"><a
-                                                                    href="{{url('/category')}}/{{$submenu->slug}}">{{$submenu->name}}</a><span
-                                                                    class="toggle-list-button"></span></div>
-                                                        <div class="description toggle-list-container">
-                                                            <ul class="list-type-1">
-                                                                @foreach(\App\Category::where('subid',$submenu->id)->where('role','child')->get() as $childmenu)
-                                                                    <li>
-                                                                        <a href="{{url('/category')}}/{{$childmenu->slug}}"><i
-                                                                                    class="fa fa-angle-right"></i>{{$childmenu->name}}
-                                                                        </a></li>
-                                                                @endforeach
-                                                            </ul>
-                                                        </div>
-                                                        <div class="hot-mark yellow">sale</div>
-                                                    </div>
-                                                @endforeach
-                                            </div>
+                                            <a href="{{url('/category')}}/{{$menu->slug}}" title="{{$menu->name}}">
+                                                {{$menu->name}}
+                                            </a>
                                         </li>
                                     @endforeach
-
-                                    @if($pagesettings[0]->a_status == 1)
-                                        <li class="simple-list"><a href="{{url('/about')}}" class="">About</a></li>
-                                    @endif
-                                    @if($pagesettings[0]->f_status == 1)
-                                        <li class="simple-list"><a href="{{url('/faq')}}" class="">Faq</a></li>
-                                    @endif
-                                    @if($pagesettings[0]->c_status == 1)
-                                        <li class="simple-list"><a href="{{url('/contact')}}" class="">Contact</a></li>
-                                    @endif
-
                                 </ul>
-
                                 <div class="clear"></div>
 
-
                             </nav>
-                            <div class="navigation-footer responsive-menu-toggle-class">
-
-                            </div>
+                            <div class="navigation-footer responsive-menu-toggle-class"></div>
                         </div>
                     </div>
                 </header>
@@ -196,6 +159,8 @@
             </div>
         </form>
     </div>
+
+
 </div>
 <script>
     var mainurl = '{{url('/')}}';

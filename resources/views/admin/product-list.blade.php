@@ -43,13 +43,7 @@
                                 <td>{{$product->title}}</td>
                                 <td>{{$product->price}}</td>
                                 <td>
-                                    {{\App\Category::where('id',$product->category[0])->first()->name}}<br>
-                                    @if($product->category[1] != "")
-                                    {{\App\Category::where('id',$product->category[1])->first()->name}}<br>
-                                    @endif
-                                    @if($product->category[2] != "")
-                                        {{\App\Category::where('id',$product->category[2])->first()->name}}
-                                    @endif
+                                    {{\App\Category::where('id',$product->category[0])->first()->name}}
                                 </td>
                                 <td>{{$product->click}}</td>
                                 <td>

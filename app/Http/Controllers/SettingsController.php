@@ -98,17 +98,6 @@ class SettingsController extends Controller
         return redirect('admin/settings');
     }
 
-    public function about(Request $request)
-    {
-        //return $request->all();
-        DB::table('settings')
-            ->where('id', 1)
-            ->update(['about' => $request->about]);
-
-
-        Session::flash('message', 'About Us Text Updated Successfully.');
-        return redirect('admin/settings');
-    }
 
     public function address(Request $request)
     {
@@ -159,9 +148,6 @@ class SettingsController extends Controller
 
     public function background(Request $request)
     {
-        //return $request->all();
-
-        ///return redirect('admin/settings');
         $logo = $request->file('background');
         $name = $logo->getClientOriginalName();
         $logo->move('assets/images',$name);

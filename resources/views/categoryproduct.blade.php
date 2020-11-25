@@ -29,32 +29,9 @@
                                 @foreach($menus as $menu)
                                     <li class="item-1 deeper parent">
                                         <a class="" href="{{url('/category')}}/{{$menu->slug}}">
-                                            <span data-toggle="collapse" data-parent="#menu-group-1" href="#{{$menu->slug}}-1" class="sign"><i class="fa fa-plus"></i></span>
+
                                             <span class="lbl">{{$menu->name}}</span>
                                         </a>
-                                        <ul class="children nav-child unstyled small collapse" id="{{$menu->slug}}-1">
-                                            @foreach(\App\Category::where('mainid',$menu->id)->where('role','sub')->get() as $submenu)
-
-                                                <li class="item-2 deeper parent">
-                                                    <a class="" href="{{url('/category')}}/{{$submenu->slug}}">
-                                                        <span data-toggle="collapse" data-parent="#menu-group-1" href="#{{$submenu->slug}}-1" class="sign"><i class="fa fa-plus"></i></span>
-                                                        <span class="lbl">{{$submenu->name}}</span>
-                                                    </a>
-
-                                                    <ul class="children nav-child unstyled small collapse" id="{{$submenu->slug}}-1">
-
-                                                            @foreach(\App\Category::where('subid',$submenu->id)->where('role','child')->get() as $childmenu)
-                                                            <li class="item-3">
-                                                                <a class="" href="{{url('/category')}}/{{$childmenu->slug}}">
-                                                                    <span class="sign"><i class="fa fa-chevron-right"></i></span>
-                                                                    <span class="lbl">{{$childmenu->name}}</span>
-                                                                </a>
-                                                            </li>
-                                                            @endforeach
-                                                    </ul>
-                                                </li>
-                                            @endforeach
-                                        </ul>
                                     </li>
                                 @endforeach
                             </ul>
