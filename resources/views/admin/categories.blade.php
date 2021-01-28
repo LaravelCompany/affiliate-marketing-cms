@@ -25,8 +25,6 @@
                         <div class="col-md-12">
                             <ul class="nav nav-tabs tabs-left">
                                 <li class="active"><a href="#maincat" data-toggle="tab" aria-expanded="false"><strong>Main Category</strong></a>
-                                <li><a href="#subcat" data-toggle="tab" aria-expanded="true"><strong>Sub Category</strong></a>
-                                <li><a href="#childcat" data-toggle="tab" aria-expanded="true"><strong>Child Category</strong></a>
                                 </li>
                             </ul>
                         </div>
@@ -70,86 +68,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="subcat">
-                                    <div class="go-title">
-                                        <div class="pull-right">
-                                            <a href="{!! url('admin/subcategory/create') !!}" class="btn btn-primary btn-add"><i class="fa fa-plus"></i> Add Sub Category</a>
-                                        </div>
-                                        <h3>Sub Category</h3>
-                                        <div class="go-line"></div>
-                                    </div>
-                                    <!-- Page Content -->
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <table class="table table-striped table-bordered" cellspacing="0" id="example2" width="100%">
-                                                <thead>
-                                                <tr>
-                                                    <th>Main Category</th>
-                                                    <th>Category Name</th>
-                                                    <th width="20%">Url Slug</th>
-                                                    <th>Actions</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                @foreach($subs as $sub)
-                                                    <tr>
-                                                        <td>{{$sub->mainid->name}}</td>
-                                                        <td>{{$sub->name}}</td>
-                                                        <td>{{$sub->slug}}</td>
-                                                        <td>
-                                                            <a href="subcategory/{{$sub->id}}/edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit </a>
-                                                            <a href="javascript:;" data-href="{{url('/')}}/admin/categories/delete/{{$sub->id}}" data-toggle="modal" data-target="#confirm-delete"class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Remove</a><br>
-
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="childcat">
-                                    <div class="go-title">
-                                        <div class="pull-right">
-                                            <a href="{!! url('admin/childcategory/create') !!}" class="btn btn-primary btn-add"><i class="fa fa-plus"></i> Add Child Category</a>
-                                        </div>
-                                        <h3>Child Category</h3>
-                                        <div class="go-line"></div>
-                                    </div>
-                                    <!-- Page Content -->
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <table class="table table-striped table-bordered" cellspacing="0" id="example3" width="100%">
-                                                <thead>
-                                                <tr>
-                                                    <th>Main Category</th>
-                                                    <th>Sub Category</th>
-                                                    <th>Category Name</th>
-                                                    <th width="20%">Url Slug</th>
-                                                    <th>Actions</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                @foreach($child as $data)
-                                                    <tr>
-                                                        <td>{{$data->mainid->name}}</td>
-                                                        <td>{{$data->subid->name}}</td>
-                                                        <td>{{$data->name}}</td>
-                                                        <td>{{$data->slug}}</td>
-                                                        <td>
-
-                                                            <a href="childcategory/{{$data->id}}/edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit </a>
-                                                            <a href="javascript:;" data-href="{{url('/')}}/admin/categories/delete/{{$data->id}}" data-toggle="modal" data-target="#confirm-delete"class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Remove</a><br>
-
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </div>

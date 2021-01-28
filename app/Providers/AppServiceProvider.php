@@ -23,11 +23,7 @@ class AppServiceProvider extends ServiceProvider
             $settings->with('sliders', DB::select('select * from sliders'));
             $settings->with('menus', DB::select('select * from categories where role=?',['main']));
             $settings->with('code', DB::select('select * from code_scripts'));
-            $settings->with('ads728x90', Advertisement::inRandomOrder()
-                ->where('banner_size','728x90')->where('status',1)->first());
-            $settings->with('ads300x250', Advertisement::inRandomOrder()
-                ->where('banner_size','300x250')->where('status',1)->get());
-            $settings->with('lang', Language::find(1));
+
         });
     }
 

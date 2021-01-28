@@ -25,51 +25,15 @@
                         <!-- /.start -->
                         <div class="col-md-12">
                             <ul class="nav nav-tabs tabs-left">
-                                <li class="active"><a href="#about" data-toggle="tab" aria-expanded="true">About Us Page</a>
-                                <li><a href="#faq" data-toggle="tab" aria-expanded="false">FAQ Page</a>
-                                </li>
-                                <li><a href="#contact" data-toggle="tab" aria-expanded="false">Contact Us Page</a>
-                                </li>
-
+                                <li class="active"><a href="#faq" data-toggle="tab" aria-expanded="false">FAQ Page</a></li>
+                                <li><a href="#contact" data-toggle="tab" aria-expanded="false">Contact Us Page</a></li>
                             </ul>
                         </div>
 
                         <div class="col-xs-12">
                             <!-- Tab panes -->
                             <div class="tab-content">
-                                <div class="tab-pane active" id="about">
-                                    <p class="lead">About Us Page</p>
-                                    <div class="ln_solid"></div>
-                                    <form method="POST" action="{{action('PageSettingsController@about')}}" class="form-horizontal form-label-left">
-                                        {{csrf_field()}}
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="facebook"> Disable/Enable About Page <span class="required">*</span>
-                                            </label>
-                                            <div class="col-md-3 col-sm-3 col-xs-9">
-                                                @if($pagedata->a_status == 1)
-                                                    <input type="checkbox" data-toggle="toggle" data-on="Enabled" name="a_status" value="1" data-off="Disabled" checked>
-                                                @else
-                                                    <input type="checkbox" data-toggle="toggle" data-on="Enabled" name="a_status" value="1" data-off="Disabled">
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="facebook"> About Us Page Content <span class="required">*</span>
-                                            </label>
-                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                              <textarea rows="10" class="form-control" name="about" id="content1" placeholder="About Page Contents" required="required">{{$pagedata->about}}</textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="ln_solid"></div>
-                                        <div class="form-group">
-                                            <div class="col-md-6 col-md-offset-3">
-                                                <button id="about_page_update" type="submit" class="btn btn-success btn-block">Update About Page</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="tab-pane" id="contact">
+                                <div class="tab-pane active" id="contact">
                                     <p class="lead">Contact Page Content</p>
                                     <div class="ln_solid"></div>
                                     <form method="POST" action="{{action('PageSettingsController@contact')}}" class="form-horizontal form-label-left">

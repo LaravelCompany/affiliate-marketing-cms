@@ -14,7 +14,6 @@ use App\UsersModel;
 */
 
 Route::get('/', 'FrontEndController@index');
-Route::get('/about', 'FrontEndController@about');
 Route::get('/faq', 'FrontEndController@faq');
 Route::get('/contact', 'FrontEndController@contact');
 
@@ -52,7 +51,6 @@ Route::post('/admin/updatecolor', 'SettingsController@themecolor');
 
 Route::post('admin/settings/title', 'SettingsController@title');
 Route::post('admin/settings/payment', 'SettingsController@payment');
-Route::post('admin/settings/about', 'SettingsController@about');
 Route::post('admin/settings/address', 'SettingsController@address');
 Route::post('admin/settings/footer', 'SettingsController@footer');
 Route::post('admin/settings/logo', 'SettingsController@logo');

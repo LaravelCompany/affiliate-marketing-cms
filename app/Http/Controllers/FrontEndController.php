@@ -144,9 +144,6 @@ class FrontEndController extends Controller
     }
 
 
-
-
-
     //Submit Review
     public function reviewsubmit(Request $request)
     {
@@ -287,16 +284,6 @@ class FrontEndController extends Controller
         return view('contact', compact('pagedata'));
     }
 
-    /**
-     * Generates the about page
-     * @method about
-     * @return Factory|Application|View
-     */
-    public function about()
-    {
-        $pagedata = PageSettings::find(1);
-        return view('about', compact('pagedata'));
-    }
 
     /**
      * Display the content for the faq page
@@ -310,7 +297,6 @@ class FrontEndController extends Controller
 
         return view('faq', compact('pagedata'));
     }
-
 
     /**
      * Subscribe an user to
